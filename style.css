@@ -1,14 +1,27 @@
+:root {
+    --primary: #4CAF50;
+    --primary-dark: #388E3C;
+    --secondary: #2196F3;
+    --accent: #FF9800;
+    --premium: #FFD700;
+    --dark: #2C3E50;
+    --light: #ECF0F1;
+    --danger: #E74C3C;
+    --success: #2ECC71;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
-    padding: 20px;
+    padding: 15px;
+    color: #333;
 }
 
 .container {
@@ -16,186 +29,391 @@ body {
     margin: 0 auto;
     background: white;
     border-radius: 20px;
-    padding: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
 }
 
 /* Хедер */
 header {
-    text-align: center;
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #eee;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 20px;
 }
 
-header h1 {
-    color: #2d3436;
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.user-info {
+.header-top {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-size: 20px;
+    display: flex;
     align-items: center;
     gap: 10px;
 }
 
-#username {
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
     font-weight: bold;
-    font-size: 18px;
 }
 
-.premium-badge {
-    background: gold;
-    padding: 5px 10px;
-    border-radius: 10px;
-    font-size: 14px;
+.badge.premium {
+    background: var(--premium);
+    color: #000;
 }
 
-.hidden {
-    display: none !important;
-}
-
-/* Статус фермы */
-.farm-status {
-    background: #f8f9fa;
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 20px;
+.stats-bar {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
 }
 
 .stat {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 5px;
 }
 
-.label {
-    font-size: 12px;
-    color: #636e72;
+.stat i {
+    font-size: 20px;
     margin-bottom: 5px;
 }
 
-.value {
-    font-size: 20px;
+.stat span {
+    font-size: 18px;
     font-weight: bold;
-    color: #2d3436;
+}
+
+/* Основной контент */
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: var(--dark);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+}
+
+h3 {
+    color: var(--dark);
+    margin-bottom: 10px;
+}
+
+/* Ферма */
+.farm-display {
+    text-align: center;
+    background: var(--light);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.farm-visual {
+    font-size: 50px;
+    color: var(--primary);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 /* Кнопки */
 .btn {
-    width: 100%;
-    padding: 18px;
+    padding: 15px 20px;
     border: none;
-    border-radius: 15px;
-    font-size: 18px;
-    font-weight: bold;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
-    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
 }
 
-.collect-btn {
-    background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
-    color: white;
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-.collect-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,176,155,0.4);
+.btn:active {
+    transform: translateY(0);
 }
 
-.collect-btn:disabled {
-    background: #b2bec3;
+.btn:disabled {
+    opacity: 0.6;
     cursor: not-allowed;
     transform: none;
 }
 
-.timer {
-    text-align: center;
-    font-size: 18px;
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+}
+
+.btn-secondary {
+    background: var(--secondary);
+    color: white;
+}
+
+.btn-premium {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #000;
     font-weight: bold;
-    color: #e17055;
-    padding: 10px;
-    background: #ffeaa7;
-    border-radius: 10px;
-    margin-bottom: 20px;
 }
 
-/* Магазин */
-.shop {
-    margin: 25px 0;
+.btn-large {
+    padding: 18px;
+    font-size: 18px;
 }
 
-.shop h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #2d3436;
+/* Таймер */
+.timer {
+    background: var(--light);
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
-.shop-item {
+/* Карточки */
+.card {
     background: white;
-    border: 2px solid #dfe6e9;
+    border: 2px solid #e0e0e0;
     border-radius: 15px;
     padding: 20px;
     margin-bottom: 15px;
 }
 
-.shop-item h3 {
-    color: #2d3436;
+.premium-card {
+    border-color: var(--premium);
+    background: linear-gradient(135deg, #FFF9C4 0%, #FFECB3 100%);
+}
+
+/* Магазин */
+.shop-item .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 10px;
 }
 
-.shop-item p {
-    color: #636e72;
-    margin-bottom: 10px;
-    line-height: 1.5;
+.price {
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 18px;
 }
 
-.upgrade-btn {
-    background: #0984e3;
-    color: white;
+.premium-tag {
+    background: var(--premium);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
 }
 
-.premium-btn {
-    background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
-    color: white;
+.premium-features {
+    list-style: none;
+    margin: 15px 0;
 }
 
-.premium-btn:disabled {
-    background: #b2bec3;
+.premium-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    color: #2C3E50;
+}
+
+.premium-features i.fa-check {
+    color: var(--success);
+}
+
+.status {
+    margin: 15px 0;
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.status-text {
+    font-weight: bold;
 }
 
 .not-premium {
-    color: #d63031;
-    font-weight: bold;
+    color: var(--danger);
 }
 
 .is-premium {
-    color: #00b894;
-    font-weight: bold;
+    color: var(--success);
 }
 
-.small {
-    font-size: 12px;
-    color: #636e72;
-    margin-top: 10px;
+/* NFT Секция */
+.nft-card {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.nft-card h3 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.nft-steps {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: white;
+    color: #6a11cb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-content strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.step-content p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.nft-info {
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.nft-info p {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 /* Инфо */
-.info {
-    background: #f8f9fa;
-    border-radius: 15px;
+.info-card {
+    background: var(--light);
     padding: 20px;
-    margin-top: 20px;
-    text-align: center;
-    color: #636e72;
-    font-size: 14px;
+    border-radius: 15px;
 }
 
-.info p {
-    margin-bottom: 8px;
+.info-card h3 {
+    margin-bottom: 15px;
+    color: var(--dark);
 }
+
+.info-card p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+code {
+    background: #2C3E50;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 12px;
+}
+
+/* Футер */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: var(--dark);
+    color: white;
+    font-size: 12px;
+}
+
+/* Утилиты */
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 400px) {
+    .container {
+        border-radius: 10px;
+    }
+    
+    h1 {
+        font-size: 16px;
+    }
+    
+    .stats-bar {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .step {
+        flex-direction: column;
+        text-align: center;
+    }
+    }
