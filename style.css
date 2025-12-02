@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* Хедер */
+header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #eee;
+}
+
+header h1 {
+    color: #2d3436;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.user-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#username {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.premium-badge {
+    background: gold;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Статус фермы */
+.farm-status {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 12px;
+    color: #636e72;
+    margin-bottom: 5px;
+}
+
+.value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2d3436;
+}
+
+/* Кнопки */
+.btn {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 15px;
+}
+
+.collect-btn {
+    background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
+    color: white;
+}
+
+.collect-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,176,155,0.4);
+}
+
+.collect-btn:disabled {
+    background: #b2bec3;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.timer {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #e17055;
+    padding: 10px;
+    background: #ffeaa7;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Магазин */
+.shop {
+    margin: 25px 0;
+}
+
+.shop h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2d3436;
+}
+
+.shop-item {
+    background: white;
+    border: 2px solid #dfe6e9;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.shop-item h3 {
+    color: #2d3436;
+    margin-bottom: 10px;
+}
+
+.shop-item p {
+    color: #636e72;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.upgrade-btn {
+    background: #0984e3;
+    color: white;
+}
+
+.premium-btn {
+    background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+    color: white;
+}
+
+.premium-btn:disabled {
+    background: #b2bec3;
+}
+
+.not-premium {
+    color: #d63031;
+    font-weight: bold;
+}
+
+.is-premium {
+    color: #00b894;
+    font-weight: bold;
+}
+
+.small {
+    font-size: 12px;
+    color: #636e72;
+    margin-top: 10px;
+}
+
+/* Инфо */
+.info {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    color: #636e72;
+    font-size: 14px;
+}
+
+.info p {
+    margin-bottom: 8px;
+}
