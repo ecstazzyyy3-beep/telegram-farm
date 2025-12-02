@@ -12,7 +12,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
         [InlineKeyboardButton(
             text="🎮 Открыть ферму", 
-            web_app=WebAppInfo(url="https://raw.githack.com/yourusername/farm/main/index.html")
+            WEB_APP_URL = "https://raw.githack.com/ecstazzyyy3-beep/telegram-farm/main/index.html"
         )],
         [InlineKeyboardButton("ℹ️ Помощь", callback_data="help")]
     ]
