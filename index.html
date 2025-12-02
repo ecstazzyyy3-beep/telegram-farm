@@ -5,75 +5,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌾 Фермерский Web App</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://telegram.org/js/telegram-web-apps"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <!-- Хедер -->
         <header>
-            <h1>🌾 Фермерский Web App</h1>
-            <div class="user-info">
-                <span id="username">Игрок</span>
-                <span id="premium-badge" class="premium-badge hidden">👑</span>
+            <div class="header-top">
+                <h1><i class="fas fa-tractor"></i> Фермерский Web App</h1>
+                <div class="user-info">
+                    <span id="username"><i class="fas fa-user"></i> Игрок</span>
+                    <span id="premium-badge" class="badge premium hidden"><i class="fas fa-crown"></i> ПРЕМИУМ</span>
+                </div>
+            </div>
+            <div class="stats-bar">
+                <div class="stat">
+                    <i class="fas fa-coins"></i>
+                    <span id="money">100</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-chart-line"></i>
+                    <span id="income">2</span>/сбор
+                </div>
+                <div class="stat">
+                    <i class="fas fa-home"></i>
+                    Ур. <span id="level">1</span>
+                </div>
             </div>
         </header>
 
-        <!-- Статус фермы -->
-        <div class="farm-status">
-            <div class="stat">
-                <span class="label">💰 Баланс:</span>
-                <span id="money" class="value">100</span>
-            </div>
-            <div class="stat">
-                <span class="label">🏡 Уровень:</span>
-                <span id="level" class="value">1</span>
-            </div>
-            <div class="stat">
-                <span class="label">📈 Доход/сбор:</span>
-                <span id="income" class="value">2</span>
-            </div>
-            <div class="stat">
-                <span class="label">⏱ Перезарядка:</span>
-                <span id="cooldown" class="value">30 сек</span>
-            </div>
-        </div>
+        <!-- Основной контент -->
+        <main>
+            <!-- Ферма -->
+            <section class="farm-section">
+                <h2><i class="fas fa-seedling"></i> Ваша ферма</h2>
+                <div class="farm-display">
+                    <div class="farm-visual" id="farm-visual">
+                        <i class="fas fa-tractor"></i>
+                        <i class="fas fa-wheat-awn"></i>
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <button id="collect-btn" class="btn btn-primary btn-large">
+                        <i class="fas fa-harvest"></i> Собрать урожай
+                    </button>
+                    <div id="timer" class="timer hidden">
+                        <i class="fas fa-clock"></i> <span id="timer-text">30</span> сек
+                    </div>
+                </div>
+            </section>
 
-        <!-- Кнопка сбора -->
-        <button id="collect-btn" class="btn collect-btn">
-            🌱 Собрать урожай
-        </button>
-        <div id="timer" class="timer hidden">⏳ 30 сек</div>
+            <!-- Магазин -->
+            <section class="shop-section">
+                <h2><i class="fas fa-store"></i> Магазин улучшений</h2>
+                
+                <div class="shop-item card">
+                    <div class="item-header">
+                        <h3><i class="fas fa-arrow-up"></i> Улучшить ферму</h3>
+                        <span class="price"><i class="fas fa-coins"></i> <span id="upgrade-cost">50</span></span>
+                    </div>
+                    <p>Увеличивает доход на +1 монету за уровень</p>
+                    <button id="upgrade-btn" class="btn btn-secondary">
+                        <i class="fas fa-arrow-up"></i> Улучшить
+                    </button>
+                </div>
 
-        <!-- Магазин -->
-        <div class="shop">
-            <h2>🏪 Магазин</h2>
-            
-            <div class="shop-item">
-                <h3>⚡ Улучшить ферму</h3>
-                <p>Увеличивает доход с 2 до 3 монет/сбор</p>
-                <p>Стоимость: <span id="upgrade-cost">50</span> монет</p>
-                <button id="upgrade-btn" class="btn upgrade-btn">Улучшить</button>
-            </div>
+                <div class="shop-item card premium-card">
+                    <div class="item-header">
+                        <h3><i class="fas fa-crown"></i> Премиум статус</h3>
+                        <span class="premium-tag"><i class="fas fa-gem"></i> NFT</span>
+                    </div>
+                    <ul class="premium-features">
+                        <li><i class="fas fa-check"></i> Перезарядка 15 сек</li>
+                        <li><i class="fas fa-check"></i> +50% к доходу</li>
+                        <li><i class="fas fa-check"></i> Золотой значок</li>
+                    </ul>
+                    <div id="premium-status" class="status">
+                        Статус: <span class="status-text not-premium">Не активирован</span>
+                    </div>
+                    <button id="premium-btn" class="btn btn-premium">
+                        <i class="fas fa-gem"></i> Получить премиум
+                    </button>
+                </div>
+            </section>
 
-            <div class="shop-item">
-                <h3>💎 Премиум статус</h3>
-                <p>• Перезарядка 15 сек (вместо 30)<br>
-                   • +50% к доходу<br>
-                   • Золотой значок 👑</p>
-                <p id="premium-status">Статус: <span class="not-premium">Не активирован</span></p>
-                <button id="premium-btn" class="btn premium-btn">Получить премиум</button>
-                <p class="small">NFT подарок: @shhappex</p>
-            </div>
-        </div>
+            <!-- NFT Инструкция -->
+            <section class="nft-section">
+                <div class="nft-card">
+                    <h3><i class="fas fa-gift"></i> Как получить премиум:</h3>
+                    <div class="nft-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <strong>Отправь NFT подарок</strong>
+                                <p>Владелец: <code>@shhappex</code></p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <strong>Сообщи свой ID</strong>
+                                <p>Твой Telegram ID: <code id="user-telegram-id">-</code></p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <strong>Жди активации</strong>
+                                <p>После проверки получишь премиум</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nft-info">
+                        <p><i class="fas fa-info-circle"></i> После отправки NFT напиши @shhappex с ID для проверки</p>
+                        <p><i class="fas fa-sync-alt"></i> Перезапусти игру после активации премиума</p>
+                    </div>
+                </div>
+            </section>
 
-        <!-- Информация -->
-        <div class="info">
-            <p>🎮 Игра работает прямо в Telegram!</p>
-            <p>💾 Прогресс сохраняется автоматически</p>
-            <p>👑 Для премиума: отправь NFT @shhappex</p>
-        </div>
+            <!-- Инфо -->
+            <section class="info-section">
+                <div class="info-card">
+                    <h3><i class="fas fa-info-circle"></i> Информация</h3>
+                    <p><i class="fas fa-save"></i> Прогресс сохраняется автоматически</p>
+                    <p><i class="fas fa-mobile-alt"></i> Работает в Telegram Web App</p>
+                    <p><i class="fas fa-code"></i> ID для проверки: <code id="user-id">-</code></p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Футер -->
+        <footer>
+            <p>🌾 Фермерский Web App • Работает на GitHub Pages</p>
+        </footer>
     </div>
 
     <script src="app.js"></script>
 </body>
-</html>
+                                                                  </html>
